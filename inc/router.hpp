@@ -38,7 +38,6 @@ public:
     // bool tree2treeMazeRouting(Net *net, Subtree *source, Subtree *sink);
     Path tree2treeMazeRouting(Grid *current_grid, Net *net, Subtree *source);
     void addHistoryCost(Path *p);
-    void routing(Net &n, int source_index, int sink_index);
     void insertPathsToGrid(Grid *grid, Path *insert_candidate);
     bool splitPaths(Grid *grid, Coordinate3D point, Path *split_candidate, std::vector<Path*> &updated_paths);
     // counting

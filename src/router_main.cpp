@@ -34,11 +34,9 @@ void Router::initial_routing() {
             }
             if(sp_counter == 1){
                 splitPaths(grid, path->start_pin, path, n.tree->at(source_index)->paths);
-                std::cout << "sp_counter: " << sp_counter << "\n";
             }
             if(ep_counter == 1){
                 splitPaths(grid, path->end_pin, path, n.tree->at(sink_index)->paths);
-                std::cout << "ep_counter: " << ep_counter << "\n";
             }
             insertPathsToGrid(grid, path);
         }
