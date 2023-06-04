@@ -17,3 +17,4 @@ $(TARGET).so: $(OBJECTS)
 
 clean:
 	rm -f $(OBJECTS) $(TARGET).so
+	rm -rf __pycache__/

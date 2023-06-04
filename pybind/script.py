@@ -1,6 +1,7 @@
 import time
-import router
 import sys
+import router
+import quadtree
 
 def main(input_file, output_file):
     start = time.time()
@@ -26,6 +27,26 @@ def main(input_file, output_file):
     print(f"Write time: {time.time() - write_start}")
 
     print(f"Total time: {time.time() - start}")
+    
+    print("QuadTree Processing")
+    quadtree_start = time.time()
+    qtree = quadtree.QTree(5, layout.width, layout.height) 
+    quadtree_addpoint_start = time.time()
+    # Access the grid's cur_paths
+    for i in range(len(r.grid.graph)):
+        for j in range(len(r.grid.graph[i])):
+            cur_paths = r.grid.graph[i][j][0].cur_paths
+            if len(cur_paths) >= 2:
+                qtree.add_point(i, j)
+    print(f"QuadTree add_point time: {time.time() - quadtree_addpoint_start}")
+    quadtree_subdivide_start = time.time()
+    qtree.subdivide()
+    print(f"QuadTree subdivide time: {time.time() - quadtree_subdivide_start}")
+    quadtree_graph_start = time.time()
+    qtree.quadtree_graph()
+    print(f"QuadTree graph time: {time.time() - quadtree_graph_start}")
+    print(f"QuadTree time: {time.time() - quadtree_start}")
+            
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
